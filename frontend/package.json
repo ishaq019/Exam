@@ -2,13 +2,16 @@
   "name": "quiz-application-frontend",
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://syedishaq.me/exam",
+
   "scripts": {
     "dev": "vite --port 5173",
     "build": "vite build",
-    "preview": "vite preview",
     "lint": "eslint src --ext .js,.jsx",
     "lint:fix": "eslint src --fix --ext .js,.jsx",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "predeploy": "npm run build",
+    "deploy": "npm run build"
   },
   "dependencies": {
     "@tiptap/extension-link": "^3.23.5",

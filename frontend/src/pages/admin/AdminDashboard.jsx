@@ -81,7 +81,7 @@ export default function AdminDashboard() {
         </Link>
 
         <Link className="action-card" to="/admin/exams">
-          <span className="action-card-icon">📋</span>
+          <span className="action-card-icon">Q</span>
           <span className="action-card-kicker">Manage Quiz</span>
           <h3>Manage Quiz</h3>
           <p className="muted">
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
         </Link>
 
         <Link className="action-card" to="/admin/surveys">
-          <span className="action-card-icon">🧩</span>
+          <span className="action-card-icon">S</span>
           <span className="action-card-kicker">Manage Survey</span>
           <h3>Manage Survey</h3>
           <p className="muted">

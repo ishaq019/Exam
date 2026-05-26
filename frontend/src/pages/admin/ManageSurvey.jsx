@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import api from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
 import { buildSurveyAppUrl, SURVEY_APP_URL } from '../../utils/externalApps';
+import { buildAppUrl } from '../../utils/appPaths';
 
 const normalizeExams = (payload) => {
   const data = payload?.data || payload;
@@ -128,15 +129,13 @@ export default function ManageSurvey() {
       `/admin/exams/${exam._id}/survey-templates?autoCreate=true&preExamEnabled=${Boolean(
         exam?.surveyConfig?.preExamEnabled
       )}&postExamEnabled=${Boolean(exam?.surveyConfig?.postExamEnabled)}`,
-      token,
-      `${window.location.origin}/admin/surveys`
+      buildAppUrl('/admin/surveys')
     );
 
   const getSurveyReportUrl = (exam) =>
     buildSurveyAppUrl(
       `/admin/exams/${exam._id}/survey-report`,
-      token,
-      `${window.location.origin}/admin/surveys`
+      buildAppUrl('/admin/surveys')
     );
 
   if (exams === null) return <Loader />;

@@ -60,6 +60,11 @@ const toNumber = (value) => {
 
 const formatPercent = (value) => `${toNumber(value)}%`;
 
+const cleanQuestionText = (text) => {
+  if (!text) return "";
+  return String(text).replace(/<\/?p>/gi, "").trim();
+};
+
 export default function ExamReport() {
   const { examId } = useParams();
   const { token } = useContext(AuthContext);
@@ -82,7 +87,7 @@ export default function ExamReport() {
         const res = await api.get(`/reports/exams/${examId}`);
         setReport(res.data);
       } catch (error) {
-        console.error("Report loading failed:", error);
+        void error;
         setReport(null);
       } finally {
         setLoading(false);
@@ -140,7 +145,7 @@ export default function ExamReport() {
 
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Report download failed:", error);
+      void error;
     }
   };
 
@@ -440,9 +445,9 @@ export default function ExamReport() {
                   <tr key={item.questionId || index}>
                     <td>
                       <strong>Q{item.questionNo || index + 1}</strong>
-                      <p className="muted question-cell-text">
-                        {item.questionText}
-                      </p>
+                      <span className="muted question-cell-text">
+                        {cleanQuestionText(item.questionText)}
+                      </span>
                     </td>
                     <td>
                       <span className={`question-difficulty ${getDifficultyClass(item.difficulty)}`}>

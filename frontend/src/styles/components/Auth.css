@@ -76,7 +76,7 @@
 
 .auth-logo-wrap svg {
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(15, 98, 254, 0.28);
+  box-shadow: var(--shadow-lg);
   transition: transform var(--transition);
 }
 
@@ -133,19 +133,62 @@
   color: var(--primary-dark);
 }
 
+.auth-inline-actions {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.auth-inline-actions .secondary-button,
+.auth-inline-actions button {
+  flex: 1;
+}
+
+.otp-banner {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+  border: 1px solid transparent;
+  font-size: 0.925rem;
+  line-height: 1.55;
+}
+
+.otp-banner span {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.otp-banner p {
+  margin: 0;
+}
+
+.success-banner {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: var(--text);
+}
+
+.warning-banner {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: var(--text);
+}
+
 /* Auth Buttons */
 .auth-form button {
   width: 100%;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  padding: 14px 24px;
+  background: var(--primary);
   color: white;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all var(--transition);
   position: relative;
   overflow: hidden;
 }
@@ -157,7 +200,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   transition: left 0.5s ease;
 }
 
@@ -166,19 +209,18 @@
 }
 
 .auth-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  background: var(--primary-dark);
 }
 
 .auth-form button:active {
   transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .auth-form button:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 /* Loading state for auth button */
@@ -228,5 +270,9 @@
   .auth-form {
     max-width: 100%;
     padding: var(--space-lg);
+  }
+
+  .auth-inline-actions {
+    flex-direction: column;
   }
 }

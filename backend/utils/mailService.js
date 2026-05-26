@@ -136,49 +136,6 @@ const sendRegistrationOtpEmail = async ({ name, email, otp }) => {
   });
 };
 
-const sendPasswordResetOtpEmail = async ({ name, email, otp }) => {
-  const safeName = escapeHtml(name || "there");
-  const safeEmail = escapeHtml(email);
-  const safeOtp = escapeHtml(otp);
-
-  const html = `
-    ${emailShell({
-      title: `🔁 Password reset code for ${safeName}`,
-      accent: "#ea580c",
-      badge: "Password Reset OTP",
-      body: "Use the one-time password below to reset your password securely. If you did not request this, you can ignore this email.",
-    })}
-    <div style="max-width:720px;margin:0 auto;padding:0 16px 32px;">
-      ${card(`
-        <p style="margin:0 0 18px;color:#334155;font-size:15px;line-height:1.7;">
-          Hello ${safeName}, we received a password reset request for your account 🔒
-        </p>
-        <div style="text-align:center;background:linear-gradient(135deg,#ffedd5 0%,#fff7ed 100%);border:1px solid #fed7aa;border-radius:20px;padding:24px;margin:22px 0;">
-          <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#c2410c;font-weight:800;margin-bottom:10px;">Reset OTP</div>
-          <div style="font-size:40px;letter-spacing:10px;font-weight:900;color:#0f172a;">${safeOtp}</div>
-        </div>
-        <div style="background:#f8fafc;border-radius:18px;padding:18px 20px;margin-top:18px;">
-          ${infoRow("Email", safeEmail)}
-          ${infoRow("Expires", "Shortly after delivery")}
-          ${infoRow("Security", "Never share this code with anyone")}
-        </div>
-      `)}
-    </div>`;
-
-  const text = [
-    `Password reset requested for ${email}`,
-    `Your reset OTP is: ${otp}`,
-    "If you did not request this, ignore this email.",
-  ].join("\n");
-
-  return sendMail({
-    to: email,
-    subject: "🔁 Your Password Reset OTP",
-    html,
-    text,
-  });
-};
-
 const buildExamReportEmail = ({ recipientName, examTitle, studentName, studentEmail, score, totalMarks, attemptNumber, submittedAt, role }) => {
   const percentage = percentageFromScore(score, totalMarks);
   const accent = role === "admin" ? "#7c3aed" : "#059669";
@@ -298,6 +255,5 @@ module.exports = {
   ADMIN_EMAIL,
   generateOtp,
   sendRegistrationOtpEmail,
-  sendPasswordResetOtpEmail,
   sendExamReportEmail,
 };

@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { buildSurveyAppUrl } from "../utils/externalApps";
+import { buildAppUrl } from "../utils/appPaths";
 
 
 export default function ExamCard({ exam, admin, onDelete }) {
-  const { token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const preSurveyEnabled = Boolean(exam?.surveyConfig?.preExamEnabled);
   return (
     <div className="card exam-card">
@@ -32,8 +33,7 @@ export default function ExamCard({ exam, admin, onDelete }) {
             className="text-link"
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-templates`,
-              token,
-              `${window.location.origin}/admin/exams`
+              buildAppUrl("/admin/exams")
             )}
           >
             Survey
@@ -48,8 +48,7 @@ export default function ExamCard({ exam, admin, onDelete }) {
             className="text-link"
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-report`,
-              token,
-              `${window.location.origin}/admin/exams`
+              buildAppUrl("/admin/exams")
             )}
           >
             Survey Report
@@ -71,8 +70,8 @@ export default function ExamCard({ exam, admin, onDelete }) {
           className="text-link"
           href={buildSurveyAppUrl(
             `/student/exams/${exam._id}/before-survey`,
-            token,
-            `${window.location.origin}/student/exams/${exam._id}/attempt`
+            buildAppUrl(`/student/exams/${exam._id}/attempt`),
+            user?._id || user?.id
           )}
         >
           Start Exam

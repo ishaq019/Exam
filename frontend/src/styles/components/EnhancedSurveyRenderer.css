@@ -1,22 +1,23 @@
 /* Enhanced Survey Renderer Styles */
 .survey-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg);
   padding: 20px;
 }
 
 .survey-progress {
-  background: white;
-  border-radius: 12px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 
 .survey-progress-bar {
   width: 100%;
   height: 8px;
-  background: #e5e7eb;
+  background: var(--surface-2);
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 12px;
@@ -24,24 +25,24 @@
 
 .survey-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: var(--primary);
   border-radius: 4px;
   transition: width 0.3s ease;
 }
 
 .survey-progress-text {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 500;
 }
 
 .survey-card {
-  background: white;
-  border-radius: 16px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
   padding: 32px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   margin-bottom: 20px;
-  border: none;
+  border: 1px solid var(--border);
 }
 
 .survey-header {
@@ -55,7 +56,7 @@
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text);
 }
 
 .survey-type-badge {
@@ -63,23 +64,22 @@
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: var(--primary);
   color: white;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
 }
 
 .survey-description {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.6;
   margin: 0 0 20px 0;
   padding: 16px;
-  background: #f8fafc;
-  border-radius: 8px;
-  border-left: 4px solid #3b82f6;
+  background: var(--surface-3);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--primary);
 }
 
 .survey-draft-indicator {
@@ -87,17 +87,18 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  background: #f0f9ff;
-  border: 1px solid #bae6fd;
-  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   margin-top: 16px;
 }
 
 .survey-form {
-  background: white;
-  border-radius: 16px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
   padding: 32px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .survey-questions {
@@ -108,15 +109,15 @@
 
 .survey-question {
   padding: 24px;
-  background: #f8fafc;
-  border-radius: 12px;
-  border: 2px solid #e5e7eb;
+  background: var(--surface-3);
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border);
   transition: all 0.2s ease;
 }
 
 .survey-question:hover {
-  border-color: #d1d5db;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .survey-question-header {
@@ -129,25 +130,25 @@
 .survey-question-text {
   font-size: 16px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text);
   margin: 0;
 }
 
 .survey-required-mark {
-  color: #ef4444;
+  color: var(--error);
   font-weight: 700;
   font-size: 18px;
 }
 
 .question-help-text {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--muted);
   margin-top: 8px;
   font-style: italic;
 }
 
 .survey-field-error {
-  color: #ef4444;
+  color: var(--error);
   font-size: 14px;
   margin-top: 8px;
   font-weight: 500;
@@ -158,13 +159,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 0 0 0;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
   margin-top: 32px;
 }
 
 .survey-step-info {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--muted);
   font-weight: 500;
 }
 
@@ -184,23 +185,22 @@
 }
 
 .survey-nav-btn.secondary {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--surface-2);
+  color: var(--text);
 }
 
 .survey-nav-btn.secondary:hover {
-  background: #e5e7eb;
+  background: var(--surface-3);
 }
 
 .survey-nav-btn.primary {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: var(--primary);
   color: white;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
 }
 
 .survey-nav-btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+  opacity: 0.9;
 }
 
 .survey-nav-btn:disabled {
@@ -211,20 +211,19 @@
 
 .survey-submit-btn {
   padding: 16px 32px;
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: var(--success);
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
 }
 
 .survey-submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.4);
+  opacity: 0.9;
 }
 
 .survey-submit-btn:disabled {

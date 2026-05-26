@@ -6,9 +6,10 @@ import Loader from "../../components/Loader";
 import api from "../../services/api";
 import { AuthContext } from "../../context/AuthContext";
 import { buildSurveyAppUrl } from "../../utils/externalApps";
+import { buildAppUrl } from "../../utils/appPaths";
 
 export default function AssignedExams() {
-  const { token } = useContext(AuthContext);
+  const { token, user } = useContext(AuthContext);
   const [exams, setExams] = useState(null);
 
   useEffect(() => {
@@ -66,8 +67,8 @@ export default function AssignedExams() {
                       className="button-link"
                       href={buildSurveyAppUrl(
                         `/student/exams/${examId}/before-survey`,
-                        token,
-                        `${window.location.origin}/student/exams/${examId}/attempt`
+                        buildAppUrl(`/student/exams/${examId}/attempt`),
+                        user?._id || user?.id
                       )}
                     >
                       {(exam.attemptsUsed || 0) > 0 ? "Retake Exam" : "Start Exam"}

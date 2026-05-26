@@ -15,6 +15,9 @@
 @import './styles/components/Tables.css';
 @import './styles/components/AdminPanel.css';
 @import './styles/components/Loader.css';
+@import './styles/components/ThemeToggle.css';
+@import './styles/components/ResultPage.css';
+@import './styles/components/CreateQuiz.css';
 
 /* Legacy styles - to be migrated to component files */
 .app-shell {
@@ -33,24 +36,24 @@
 .app-orb {
   position: fixed;
   z-index: 0;
-  width: 420px;
-  height: 420px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  filter: blur(18px);
-  opacity: 0.5;
+  filter: blur(80px);
+  opacity: 0.35;
   pointer-events: none;
 }
 
 .app-orb-left {
-  top: -140px;
-  left: -120px;
-  background: radial-gradient(circle, rgba(20, 184, 166, 0.26), transparent 70%);
+  top: -200px;
+  left: -180px;
+  background: var(--primary-soft);
 }
 
 .app-orb-right {
-  top: 140px;
-  right: -160px;
-  background: radial-gradient(circle, rgba(15, 98, 254, 0.2), transparent 70%);
+  top: 100px;
+  right: -200px;
+  background: rgba(13, 148, 136, 0.06);
 }
 
 .eyebrow {

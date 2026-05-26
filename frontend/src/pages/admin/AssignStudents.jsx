@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -16,7 +16,7 @@ export default function AssignStudents() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -34,11 +34,11 @@ export default function AssignStudents() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [examId]);
 
   useEffect(() => {
     if (examId) loadData();
-  }, [examId]);
+  }, [examId, loadData]);
 
   const toggleStudent = (studentId) => {
     setSelectedStudents((old) =>
