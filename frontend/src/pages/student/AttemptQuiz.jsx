@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import Loader from "../../components/Loader";
-import api from "../../services/api";
-import { AuthContext } from "../../context/AuthContext";
-import stripHtml from "../../utils/stripHtml";
-import { buildSurveyAppUrl } from "../../utils/externalApps";
-import { getAppAbsoluteUrl } from "../../utils/appUrl";
-=======
 import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -25,7 +8,6 @@ import stripHtml from '../../utils/stripHtml';
 import { buildSurveyAppUrl } from '../../utils/externalApps';
 import { buildAppUrl } from '../../utils/appPaths';
 import '../../styles/components/ExamAttempt.css';
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
 
 const formatTime = (seconds = 0) => {
   const safeSeconds = Math.max(0, seconds);
@@ -154,13 +136,8 @@ export default function AttemptQuiz() {
           sessionStorage.setItem(resultKey, JSON.stringify(res.data));
           window.location.href = buildSurveyAppUrl(
             `/student/exams/${examId}/after-survey`,
-<<<<<<< HEAD
-            token,
-            getAppAbsoluteUrl(`/result?resultKey=${encodeURIComponent(resultKey)}`)
-=======
             buildAppUrl(`/result?resultKey=${encodeURIComponent(resultKey)}`),
             user?._id || user?.id
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
           );
           return;
         }

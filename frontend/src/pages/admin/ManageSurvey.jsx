@@ -6,11 +6,7 @@ import Loader from '../../components/Loader';
 import api from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
 import { buildSurveyAppUrl, SURVEY_APP_URL } from '../../utils/externalApps';
-<<<<<<< HEAD
-import { getAppAbsoluteUrl } from '../../utils/appUrl';
-=======
 import { buildAppUrl } from '../../utils/appPaths';
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
 
 const normalizeExams = (payload) => {
   const data = payload?.data || payload;
@@ -133,23 +129,13 @@ export default function ManageSurvey() {
       `/admin/exams/${exam._id}/survey-templates?autoCreate=true&preExamEnabled=${Boolean(
         exam?.surveyConfig?.preExamEnabled
       )}&postExamEnabled=${Boolean(exam?.surveyConfig?.postExamEnabled)}`,
-<<<<<<< HEAD
-      token,
-      getAppAbsoluteUrl('/admin/surveys')
-=======
       buildAppUrl('/admin/surveys')
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
     );
 
   const getSurveyReportUrl = (exam) =>
     buildSurveyAppUrl(
       `/admin/exams/${exam._id}/survey-report`,
-<<<<<<< HEAD
-      token,
-      getAppAbsoluteUrl('/admin/surveys')
-=======
       buildAppUrl('/admin/surveys')
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
     );
 
   if (exams === null) return <Loader />;

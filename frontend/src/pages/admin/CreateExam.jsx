@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import api from "../../services/api";
-import { AuthContext } from "../../context/AuthContext";
-import { buildSurveyAppUrl } from "../../utils/externalApps";
-import { getAppAbsoluteUrl } from "../../utils/appUrl";
-=======
 import React, { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -16,7 +7,6 @@ import { buildAppUrl } from '../../utils/appPaths';
 import '../../styles/components/CreateQuiz.css';
 
 const steps = ['Basic Info', 'Timing', 'Rules & Survey', 'Review'];
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
 
 export default function CreateExam() {
   const navigate = useNavigate();
@@ -76,12 +66,7 @@ export default function CreateExam() {
         toast.success('Quiz created. Opening survey template setup.');
         window.location.href = buildSurveyAppUrl(
           `/admin/exams/${exam._id}/survey-templates?autoCreate=true&preExamEnabled=${form.surveyConfig.preExamEnabled}&postExamEnabled=${form.surveyConfig.postExamEnabled}`,
-<<<<<<< HEAD
-          token,
-          getAppAbsoluteUrl("/admin/exams")
-=======
           buildAppUrl('/admin/exams')
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
         );
         return;
       }

@@ -6,11 +6,7 @@ import Loader from "../../components/Loader";
 import api from "../../services/api";
 import { AuthContext } from "../../context/AuthContext";
 import { buildSurveyAppUrl } from "../../utils/externalApps";
-<<<<<<< HEAD
-import { getAppAbsoluteUrl } from "../../utils/appUrl";
-=======
 import { buildAppUrl } from "../../utils/appPaths";
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
 
 export default function AssignedExams() {
   const { token, user } = useContext(AuthContext);
@@ -71,13 +67,8 @@ export default function AssignedExams() {
                       className="button-link"
                       href={buildSurveyAppUrl(
                         `/student/exams/${examId}/before-survey`,
-<<<<<<< HEAD
-                        token,
-                        getAppAbsoluteUrl(`/student/exams/${examId}/attempt`)
-=======
                         buildAppUrl(`/student/exams/${examId}/attempt`),
                         user?._id || user?.id
->>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
                       )}
                     >
                       {(exam.attemptsUsed || 0) > 0 ? "Retake Exam" : "Start Exam"}
