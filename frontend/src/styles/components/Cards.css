@@ -1,18 +1,19 @@
 /* Card Component Styles */
 
 .card {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), #ffffff);
+  background: var(--surface);
   padding: var(--space-lg);
   margin: var(--space-sm) 0;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow);
+  border-color: var(--primary-soft);
 }
 
 /* Card variants */
@@ -102,7 +103,7 @@
 }
 
 .exam-status-pill.scheduled {
-  background: rgba(15, 98, 254, 0.1);
+  background: var(--primary-soft);
   color: var(--primary);
   border-color: var(--primary-soft);
 }
@@ -275,7 +276,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.8),
+    var(--surface-2),
     transparent
   );
   animation: loading-shimmer 1.5s infinite;

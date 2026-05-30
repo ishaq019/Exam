@@ -7,6 +7,7 @@ const Attempt = require("../models/Attempt");
 const Assignment = require("../models/ExamAssignment");
 const examEvents = require("../events/examEvents");
 const asyncHandler = require("../utils/asyncHandler");
+const { ADMIN_EMAIL, sendExamReportEmail } = require("../utils/mailService");
 
 const TIMER_GRACE_SECONDS = 10;
 
@@ -179,7 +180,7 @@ exports.submitExam = asyncHandler(async (req, res) => {
   }
 
   const [exam, previousAttempts] = await Promise.all([
-    Exam.findById(examId).select("duration endTime surveyConfig").lean(),
+    Exam.findById(examId).select("title duration endTime surveyConfig").lean(),
 
     Attempt.countDocuments({
       examId,
@@ -328,6 +329,35 @@ exports.submitExam = asyncHandler(async (req, res) => {
     attemptNumber,
     score: result.score,
   });
+
+  void Promise.allSettled([
+    sendExamReportEmail({
+      to: req.user.email,
+      recipientName: req.user.name,
+      examTitle: exam.title,
+      studentName: req.user.name,
+      studentEmail: req.user.email,
+      score: result.score,
+      totalMarks: result.totalMarks,
+      attemptNumber,
+      submittedAt: now,
+      role: "student",
+    }),
+    ADMIN_EMAIL && ADMIN_EMAIL !== req.user.email
+      ? sendExamReportEmail({
+          to: ADMIN_EMAIL,
+          recipientName: "Administrator",
+          examTitle: exam.title,
+          studentName: req.user.name,
+          studentEmail: req.user.email,
+          score: result.score,
+          totalMarks: result.totalMarks,
+          attemptNumber,
+          submittedAt: now,
+          role: "admin",
+        })
+      : Promise.resolve(true),
+  ]);
 
   const attemptPayload = typeof attempt.toObject === "function" ? attempt.toObject() : attempt;
 

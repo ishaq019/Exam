@@ -32,7 +32,7 @@ const connectDB = async () => {
       );
 
       if (retries < maxRetries) {
-        const delay = Math.pow(2, retries) * 1000; // exponential backoff
+        const delay = Math.pow(2, retries) * 1000; 
         console.log(`Retrying in ${delay}ms...`);
         await new Promise((resolve) => setTimeout(resolve, delay));
       } else {

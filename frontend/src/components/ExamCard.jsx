@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { buildSurveyAppUrl } from "../utils/externalApps";
+<<<<<<< HEAD
 import { getAppAbsoluteUrl } from "../utils/appUrl";
+=======
+import { buildAppUrl } from "../utils/appPaths";
+>>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
 
 
 export default function ExamCard({ exam, admin, onDelete }) {
-  const { token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const preSurveyEnabled = Boolean(exam?.surveyConfig?.preExamEnabled);
   return (
     <div className="card exam-card">
@@ -33,8 +37,12 @@ export default function ExamCard({ exam, admin, onDelete }) {
             className="text-link"
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-templates`,
+<<<<<<< HEAD
               token,
               getAppAbsoluteUrl("/admin/exams")
+=======
+              buildAppUrl("/admin/exams")
+>>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
             )}
           >
             Survey
@@ -49,8 +57,12 @@ export default function ExamCard({ exam, admin, onDelete }) {
             className="text-link"
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-report`,
+<<<<<<< HEAD
               token,
               getAppAbsoluteUrl("/admin/exams")
+=======
+              buildAppUrl("/admin/exams")
+>>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
             )}
           >
             Survey Report
@@ -72,8 +84,13 @@ export default function ExamCard({ exam, admin, onDelete }) {
           className="text-link"
           href={buildSurveyAppUrl(
             `/student/exams/${exam._id}/before-survey`,
+<<<<<<< HEAD
             token,
             getAppAbsoluteUrl(`/student/exams/${exam._id}/attempt`)
+=======
+            buildAppUrl(`/student/exams/${exam._id}/attempt`),
+            user?._id || user?.id
+>>>>>>> 1f0654a052122a3098ced2a5273f94eeceb25b52
           )}
         >
           Start Exam

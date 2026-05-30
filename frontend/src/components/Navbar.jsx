@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import AppLogo from "./AppLogo";
+import ThemeToggle from "./common/ThemeToggle";
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
@@ -57,6 +58,7 @@ export default function Navbar() {
       </div>
 
       <div className="nav-actions">
+        <ThemeToggle />
         {user ? (
           <>
             <span className="nav-user">

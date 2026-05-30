@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import QuestionForm from "../../components/QuestionForm";
@@ -15,7 +15,7 @@ export default function AddQuestions() {
   const [dragOverIndex, setDragOverIndex] = useState(null);
   const dragIndexRef = React.useRef(null);
 
-  const load = () => {
+  const load = useCallback(() => {
     api.get(`/exams/${examId}/questions`, { params: { limit: 100 } })
       .then((res) => {
         const data = res.data.data || res.data;
@@ -25,9 +25,9 @@ export default function AddQuestions() {
         toast.error("Failed to load questions");
         setQuestions([]);
       });
-  };
+  }, [examId]);
 
-  useEffect(() => { load(); }, [examId]);
+  useEffect(() => { load(); }, [load]);
 
   const save = async (form) => {
     try {

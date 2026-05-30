@@ -73,8 +73,7 @@ button:not([class]):hover:not(:disabled) {
 }
 
 .danger-button:hover:not(:disabled) {
-  background: #dc2626;
-  border-color: #dc2626;
+  opacity: 0.9;
   transform: translateY(-1px);
   box-shadow: var(--shadow);
 }
@@ -90,8 +89,7 @@ button:not([class]):hover:not(:disabled) {
 }
 
 .success-button:hover:not(:disabled) {
-  background: #059669;
-  border-color: #059669;
+  opacity: 0.9;
   transform: translateY(-1px);
   box-shadow: var(--shadow);
 }
