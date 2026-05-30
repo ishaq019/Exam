@@ -6,9 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
+import { getAppBasePath } from "./utils/appUrl";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename={getAppBasePath()}>
     <AuthProvider>
       <App />
       <ToastContainer position="top-right" autoClose={2000} />

@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import api from "../../services/api";
 import { AuthContext } from "../../context/AuthContext";
 import { buildSurveyAppUrl } from "../../utils/externalApps";
+import { getAppAbsoluteUrl } from "../../utils/appUrl";
 
 export default function CreateExam() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function CreateExam() {
         window.location.href = buildSurveyAppUrl(
           `/admin/exams/${exam._id}/survey-templates?autoCreate=true&preExamEnabled=${form.surveyConfig.preExamEnabled}&postExamEnabled=${form.surveyConfig.postExamEnabled}`,
           token,
-          `${window.location.origin}/admin/exams`
+          getAppAbsoluteUrl("/admin/exams")
         );
         return;
       }

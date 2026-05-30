@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { buildSurveyAppUrl } from "../utils/externalApps";
+import { getAppAbsoluteUrl } from "../utils/appUrl";
 
 
 export default function ExamCard({ exam, admin, onDelete }) {
@@ -33,7 +34,7 @@ export default function ExamCard({ exam, admin, onDelete }) {
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-templates`,
               token,
-              `${window.location.origin}/admin/exams`
+              getAppAbsoluteUrl("/admin/exams")
             )}
           >
             Survey
@@ -49,7 +50,7 @@ export default function ExamCard({ exam, admin, onDelete }) {
             href={buildSurveyAppUrl(
               `/admin/exams/${exam._id}/survey-report`,
               token,
-              `${window.location.origin}/admin/exams`
+              getAppAbsoluteUrl("/admin/exams")
             )}
           >
             Survey Report
@@ -72,7 +73,7 @@ export default function ExamCard({ exam, admin, onDelete }) {
           href={buildSurveyAppUrl(
             `/student/exams/${exam._id}/before-survey`,
             token,
-            `${window.location.origin}/student/exams/${exam._id}/attempt`
+            getAppAbsoluteUrl(`/student/exams/${exam._id}/attempt`)
           )}
         >
           Start Exam

@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import api from "../../services/api";
 import { AuthContext } from "../../context/AuthContext";
 import { buildSurveyAppUrl } from "../../utils/externalApps";
+import { getAppAbsoluteUrl } from "../../utils/appUrl";
 
 export default function AssignedExams() {
   const { token } = useContext(AuthContext);
@@ -67,7 +68,7 @@ export default function AssignedExams() {
                       href={buildSurveyAppUrl(
                         `/student/exams/${examId}/before-survey`,
                         token,
-                        `${window.location.origin}/student/exams/${examId}/attempt`
+                        getAppAbsoluteUrl(`/student/exams/${examId}/attempt`)
                       )}
                     >
                       {(exam.attemptsUsed || 0) > 0 ? "Retake Exam" : "Start Exam"}

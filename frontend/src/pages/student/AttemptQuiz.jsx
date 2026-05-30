@@ -12,6 +12,7 @@ import api from "../../services/api";
 import { AuthContext } from "../../context/AuthContext";
 import stripHtml from "../../utils/stripHtml";
 import { buildSurveyAppUrl } from "../../utils/externalApps";
+import { getAppAbsoluteUrl } from "../../utils/appUrl";
 
 const formatTime = (seconds = 0) => {
   const safeSeconds = Math.max(0, seconds);
@@ -125,7 +126,7 @@ export default function AttemptQuiz() {
           window.location.href = buildSurveyAppUrl(
             `/student/exams/${examId}/after-survey`,
             token,
-            `${window.location.origin}/result?resultKey=${encodeURIComponent(resultKey)}`
+            getAppAbsoluteUrl(`/result?resultKey=${encodeURIComponent(resultKey)}`)
           );
         } else {
           navigate(`/result`, { state: res.data });
